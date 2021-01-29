@@ -1,0 +1,48 @@
+/*
+Power of Thor - Episode 1
+Ebben a feladatban Thor-t kell irányítanunk a villámhoz.
+A mellékelt kép ennek a ciklusnak az első feladatának a kezdő képernyője
+(a továbbiakban természetesen egyre nehezebb az út, de a kód ugyanaz)
+*/
+
+// ezek a gép által létrehozott változók:
+
+var inputs = readline().split(' ');
+const lightX = parseInt(inputs[0]); // A cél X koordinátája.
+const lightY = parseInt(inputs[1]); // A cél Y koordinátája.
+const initialTx = parseInt(inputs[2]); // Thor kezdő X koordinátája.
+const initialTy = parseInt(inputs[3]); // Thor kezdő Y koordinátája.
+
+//ezek az általam létrehozott változók:
+
+var thorX=initialTx;
+var thorY=initialTy;
+
+
+// a játék ciklusa:
+while (true) {
+    const remainingTurns = parseInt(readline()); // A gép által létrehozott kód, ami a hátralevő köröket számolja
+
+    var vertikalis="";
+    var horizontalis="";
+
+    if(lightX>thorX){
+        horizontalis="E";
+        thorX++;
+    }else if(lightX<thorX){
+        horizontalis="W";
+        thorX--;
+    }
+
+    if(lightY<thorY){
+        vertikalis="N";
+        thorY--;
+    }else if(lightY>thorY){
+        vertikalis="S";
+        thorY++;
+    }
+
+
+    // Az utasítás, amivel meg kell adnom az irányt, amerre Thornak haladnia kell: N NE E SE S SW W vagy NW
+    console.log(vertikalis+horizontalis);
+}
