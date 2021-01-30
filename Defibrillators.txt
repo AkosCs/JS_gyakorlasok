@@ -1,0 +1,47 @@
+/*
+A cél: Montpellier-ben, a jelenlegi pozíciónk alapján meg kell találni a legközelebbi defibrillátort
+a város által közre adott lista alapján.
+*/
+
+//A saját változók:
+let defibAdatok=[];
+let defibNeve="";
+let defibTav=Number.MAX_VALUE;
+
+
+// A gép által megadott változók:
+
+const LON = readline().replace(",","."); //A jelenlegi X pozíció
+let sajatX=parseFloat(LON); //saját változó a jelenlegi X pozícióra
+const LAT = readline().replace(",","."); //A jelenlegi Y pozíció
+let sajatY=parseFloat(LAT); //saját változó a jelenlegi Y pozícióra
+const N = parseInt(readline());
+for (let i = 0; i < N; i++) {
+    defibAdatok = readline().split(";");
+    /*
+    Az elérhető defibrillátor adatai, az adatokat a stringben ";" választja el:
+    - ID
+    - Név
+    - Cím
+    - Telefonszám
+    - X
+    - Y
+    */
+    let defibX=parseFloat(defibAdatok[4].replace(",","."));
+    let defibY=parseFloat(defibAdatok[5].replace(",","."));
+    defibX-=sajatX;
+    defibY-=sajatY;
+
+    let tavolsag=Math.sqrt(Math.pow(defibX, 2)+Math.pow(defibY,2));
+
+    if(tavolsag<defibTav){
+        defibTav=tavolsag;
+        defibNeve=defibAdatok[1]
+    }
+
+
+}
+
+
+
+console.log(defibNeve);
