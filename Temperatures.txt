@@ -1,0 +1,25 @@
+/*
+A cél: a megadott hőmérsékletek közül (pozitív és negatív egyaránt) kiválasztani azt,
+amelyik a legközelebb van a 0-hoz. Ha két hőmérsékleti érték ugyanolyan távolságra van,
+a pozitívat kell választani.
+*/
+
+// Saját változó:
+
+let nullahozLegkozelebbi=Number.MAX_VALUE;
+
+// A gép által létrehozott változók:
+
+const n = parseInt(readline()); // A hőmérsékleti értékek száma.
+var inputs = readline().split(' ');
+for (let i = 0; i < n; i++) {
+    const t = parseInt(inputs[i]);// egy hőmérsékleti érték -273 és 5526 között.
+
+    if(Math.abs(t) < Math.abs(nullahozLegkozelebbi)) nullahozLegkozelebbi=t;
+    if(Math.abs(t) == Math.abs(nullahozLegkozelebbi) && t>0) nullahozLegkozelebbi=t;
+
+}
+
+
+
+console.log((n==0) ? "0" : nullahozLegkozelebbi);
