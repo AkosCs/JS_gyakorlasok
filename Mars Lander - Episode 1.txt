@@ -1,0 +1,49 @@
+/* 
+A cél: Biztonságban talajt kell érnie a "Mars Lander" járműnek.
+Ez a feladat az első rész három közül, így olyan adatok is vannak, amikre még nincs szükség.
+A játék területének szélessége 7000 m, a magassága 3000 m. Ezen a szinten a jármű pontosan
+a leszálló zóna fölött van, kezdő sebesség nékül.
+Minden másodpercben, a repülési adatoktól függően, a programnak meg kell adnia a Mars Lander
+új Forgási szögét és a gyorsulást. A szög -90° és 90° között van, a gyorsulás 0 és 4 között.
+A játék egy szabadesést szimulál atmoszféra nélkül. A Mars gravitációja 3,711 m/s²
+Ennek a gravitációnak a kompenzálásához 4-es gyorsulási érték kell majdnem függőleges pozícióban.
+A sikeres földet éréshez:
+- A járműnek sima talajon kell leszállnia
+- Függőleges helyzetben (forgási szög = 0°)
+- Függőleges sebességet csökkenteni kell (≤ 40m/s abszolút értékben)
+- Vízszintes sebességet csökkenteni kell (≤ 20m/s abszolút értékben)
+*/
+
+
+
+//A gép által adott változók:
+const surfaceN = parseInt(readline()); // A Mars felszínének a rajzolásáhosz szükséges ppontok száma.
+for (let i = 0; i < surfaceN; i++) {
+    var inputs = readline().split(' ');
+    const landX = parseInt(inputs[0]); // X koordinátája az adott pontnak (0 - 6999)
+    const landY = parseInt(inputs[1]); // Y koordinátája az adott pontnak.
+}
+
+let ero = 3; //a saját változóm a gyorsulási erő tárolására
+
+// a játék ciklusa:
+while (true) {
+    var inputs = readline().split(' ');
+    const X = parseInt(inputs[0]); // a Mars Lander X koordinátája
+    const Y = parseInt(inputs[1]); // a Mars Lander Y koordinátája
+    const hSpeed = parseInt(inputs[2]); // vízszintes sebesség (m/s), lehet negatív.
+    const vSpeed = parseInt(inputs[3]); // függőleges sebesség (m/s), lehet negatív.
+    const fuel = parseInt(inputs[4]); // a maradék üzemanyag mennyisége - 0 esetén a gyorsulás is 0 lesz
+    const rotate = parseInt(inputs[5]); // a forgási szög fokban (-90 - 90).
+    const power = parseInt(inputs[6]); // a gyorsulási erő (0 - 4).
+
+
+
+    if (vSpeed < -40) ero = 4;
+
+    /*
+    2 integert kell megadni:
+    - fordulás (az első szinten ez 0),
+    - gyorsulási erő (0 - 4) - az előző körhöz képest +/- 1 lehet.
+    */
+    console.log("0 " + ero);
