@@ -1,0 +1,28 @@
+/*
+Egy lóverseny-pálya új lóversenyeket hirdet, az úgynevezett "párbajokat", melyeknek két
+hasonló erősségű ló a résztvevője.
+A cél: N számú ló közül megtalálni a legkisebb erősséget két ló között,
+és a programnak ezt a különbséget kell megjelenítenie (≥ 0).
+*/
+
+let lovak=[];
+let kulonbseg=Number.MAX_VALUE;
+
+//gép által létrehozott változó:
+const N = parseInt(readline()); //a lovak száma
+for (let i = 0; i < N; i++) {
+    const pi = parseInt(readline()); //egy integer: az adott ló erőssége
+
+    lovak[i]=pi;
+
+    }
+
+    lovak.sort(function(a,b) {return a-b}); //ez rendezi a lovakat növekvő sorrendben
+
+    for(let i=0;i<lovak.length-1;i++){
+        kulonbseg=Math.min(kulonbseg, lovak[i+1]-lovak[i]);
+    }
+
+
+
+console.log(kulonbseg);
